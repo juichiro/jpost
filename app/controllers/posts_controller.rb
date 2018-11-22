@@ -8,7 +8,7 @@ class PostsController < ApplicationController
       flash[:success] = '正常に投稿されました'
       redirect_to root_url
     else
-      @posts = current_user.posts.order('created_at DESC').page(params[:page])#トップページからこっちに移る際に@postsのなかのデータ転送されないのでもう一度取得している。
+      @posts = current_user.feed_posts.order('created_at DESC').page(params[:page])#トップページからこっちに移る際に@postsのなかのデータ転送されないのでもう一度取得している。
       flash.now[:danger] ='投稿に失敗しました'
       render 'toppages/index.html.erb'
     end 
